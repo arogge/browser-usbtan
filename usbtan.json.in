@@ -1,0 +1,8 @@
+{
+  "name": "usbtan",
+  "description": "Host application to provide TANs",
+  "path": "@CMAKE_BINARY_DIR@/browser-usbtan",
+  "type": "stdio",
+  "allowed_extensions": [ "flickercode_scraper@solvention.de" ]
+}
+

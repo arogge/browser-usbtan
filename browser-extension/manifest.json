@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+  "name": "Flickercode Scraper",
+  "version": "1.0",
+  "description": "Scrapes the chipTAN optical flickercodes from banking-websites.",
+  "icons": {
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+          "file:///*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    "flickercode_scraper.js"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "flickercode_scraper@solvention.de",
+      "strict_min_version": "63.0"
+    }
+  },
+  "permissions": ["nativeMessaging"]
+}
+
+
