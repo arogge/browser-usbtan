@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.18)
-project(browser-usbtan CXX)
+project(browser-usbtan C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -13,13 +13,25 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
     "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
 endif()
 
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
+
 add_subdirectory(deps EXCLUDE_FROM_ALL)
+
+find_package(Gwenhywfar REQUIRED)
+find_package(Libchipcard REQUIRED)
+
+include(include-what-you-use)
 
 add_compile_options(-Wall -Wextra -pedantic)
 
 add_executable(browser-usbtan)
 target_sources(browser-usbtan PRIVATE src/main.cc)
 target_link_libraries(browser-usbtan PRIVATE GSL nlohmann_json::nlohmann_json)
+
+add_executable(usbtan-cli)
+target_sources(usbtan-cli PRIVATE src/usbtan-cli.cc src/flickercode.c src/flickercode.h)
+target_compile_definitions(usbtan-cli PRIVATE ENABLE_CLI)
+target_link_libraries(usbtan-cli PRIVATE Gwenhywfar::Gwenhywfar Libchipcard::Libchipcard GSL)
 
 configure_file(usbtan.json.in ${CMAKE_BINARY_DIR}/usbtan.json @ONLY)
 
