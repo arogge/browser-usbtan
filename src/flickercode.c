@@ -5,15 +5,13 @@
  * Largely based on work by Ellebruch Herbert.
  */
 
-#include <chipcard/client.h>
 #include <ctype.h>
-#include <gwenhywfar/args.h>
-#include <gwenhywfar/cgui.h>
-#include <gwenhywfar/ct.h>
-#include <gwenhywfar/ctplugin.h>
-#include <gwenhywfar/debug.h>
 #include <gwenhywfar/text.h>
-#include <gwenhywfar/url.h>
+#include <assert.h>
+#include <gwenhywfar/error.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <string.h>
 
 #include "flickercode.h"
 

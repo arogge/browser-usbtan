@@ -5,22 +5,18 @@
  * Largely based on work by Ellebruch Herbert.
  */
 
-#include <chipcard/client.h>
-#include <ctype.h>
-#include <gwenhywfar/args.h>
-#include <gwenhywfar/cgui.h>
-#include <gwenhywfar/ct.h>
-#include <gwenhywfar/ctplugin.h>
 #include <gwenhywfar/debug.h>
-#include <gwenhywfar/text.h>
-#include <gwenhywfar/url.h>
-
+#include <stdio.h>
+#include <gwenhywfar/buffer.h>
+#include <gwenhywfar/libloader.h>
+#include <gwenhywfar/plugin.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
 #include <iomanip>
 #include <iostream>
-#include <sstream>
 #include <string>
-#include <gsl/gsl>
-#include <stdio.h>
+#include <gsl/span>
 
 #include "flickercode.h"
 
