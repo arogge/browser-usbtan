@@ -5,6 +5,7 @@ Browser-USBtan aims to provide a browser-extension together with a matching nati
 ## Project status
 **This is currently a proof-of-concept**. The browser-extension works, scrapes the flickercode and talks to the native-messaging-host application. However, that application cannot generate TAN numbers, but only responds with the reversed flickercode string.
 
+As this is currently tailored to testing, the extension will only runs on local URLs (i.e. those starting with file:///).
 The extension is only tested with Firefox. It may work with Chrome, too.
 
 ## Installation
