@@ -5,6 +5,10 @@
  * Largely based on work by Ellebruch Herbert.
  */
 
+/*
+aqbanking-5.99.44beta/src/libs/plugins/backends/aqhbci/tan/tan_chiptan_opt.c
+*/
+
 #ifndef BROWSER_USBTAN_FLICKERCODE_H_
 #define BROWSER_USBTAN_FLICKERCODE_H_
 
@@ -13,15 +17,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-// int _readBytesDec(const char* p, int len);
 int _readBytesHex(const char* p, int len);
-// unsigned int _quersumme(unsigned int i);
-// int _extractDataForLuhnSum(const char* code, GWEN_BUFFER* xbuf);
-// int _calcLuhnSum(const char* code, int len);
-// int _calcXorSum(const char* code, int len);
-// int __translate(const char* code, GWEN_BUFFER* cbuf);
 int _translate(const char* code, GWEN_BUFFER* cbuf);
-// int __translateWithLen(const char* code, GWEN_BUFFER* cbuf, int sizeLen);
 
 #ifdef __cplusplus
 }

@@ -5,6 +5,10 @@
  * Largely based on work by Ellebruch Herbert.
  */
 
+/*
+aqbanking-5.99.44beta/src/libs/plugins/backends/aqhbci/tan/tan_chiptan_opt.c
+*/
+
 #include <ctype.h>
 #include <gwenhywfar/text.h>
 #include <assert.h>
@@ -16,13 +20,11 @@
 #include "flickercode.h"
 
 static int _readBytesDec(const char* p, int len);
-// int _readBytesHex(const char* p, int len);
 static unsigned int _quersumme(unsigned int i);
 static int _extractDataForLuhnSum(const char* code, GWEN_BUFFER* xbuf);
 static int _calcLuhnSum(const char* code, int len);
 static int _calcXorSum(const char* code, int len);
 static int __translate(const char* code, GWEN_BUFFER* cbuf);
-// int _translate(const char* code, GWEN_BUFFER* cbuf);
 static int __translateWithLen(const char* code, GWEN_BUFFER* cbuf, int sizeLen);
 
 int _translate(const char* code, GWEN_BUFFER* cbuf)

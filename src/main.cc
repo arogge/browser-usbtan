@@ -4,9 +4,11 @@
 #include <cstdio>
 #include <string>
 #include <cassert>
-#include <algorithm>
 #include <gsl/gsl_util>
 #include <vector>
+
+#include "hhd_command.hh"
+#include "generate_tan.hh"
 
 constexpr ssize_t max_msg_size = 1024 * 1024;
 
@@ -36,8 +38,10 @@ void emit_response(FILE* fp, json response) {
 int main() {
   auto js = read_request(stdin);
   auto flickercode = js["flickercode"].get<std::string>();
-  std::reverse(flickercode.begin(), flickercode.end());
-  js["tan"] = flickercode;
+
+  auto cmd = HhdCommand{flickercode};
+  auto res = generate_tan(cmd);
+  js["tan"] = res.Tan;
   emit_response(stdout, js);
   return 0;
 }
