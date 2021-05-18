@@ -20,7 +20,7 @@ TanResult generate_tan(HhdCommand& cmd) {
       = (GetTanfromUSB_GeneratorFn)resolve_chiptanusb_func(
           "GetTanfromUSB_Generator");
   if(!get_tan) {
-    std::cerr << "Fehler beim laden den TAN-Moduls\n";
+    std::cerr << "Could not load TAN module\n";
     exit(1);
   }
 
@@ -29,7 +29,7 @@ TanResult generate_tan(HhdCommand& cmd) {
               cmd.get_buffer().size_bytes(), &res.ATC, res.Tan,
               sizeof(res.Tan) - 1, res.Cardnummber, res.EndDate, res.IssueDate)
       < 0) {
-    std::cerr << "Fehler bei TAN Generierung\n";
+    std::cerr << "Error generating TAN\n";
     exit(1);
   }
   return res;

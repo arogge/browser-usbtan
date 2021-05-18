@@ -22,39 +22,23 @@ file(CREATE_LINK "${CMAKE_BINARY_DIR}/compile_commands.json"
 add_subdirectory(deps EXCLUDE_FROM_ALL)
 
 find_package(Gwenhywfar REQUIRED)
-find_package(Libchipcard REQUIRED)
 
 include(include-what-you-use)
 
 add_compile_options(-Wall -Wextra -pedantic)
 
 add_executable(browser-usbtan)
-target_sources(browser-usbtan 
-               PRIVATE src/main.cc
-                       src/generate_tan.cc
-                       src/generate_tan.hh
-                       src/hhd_command.cc
-                       src/hhd_command.hh
-                       src/resolve_func.c
-                       src/resolve_func.h
-               )
-target_link_libraries(browser-usbtan PRIVATE Gwenhywfar::Gwenhywfar GSL nlohmann_json::nlohmann_json)
-
-add_executable(usbtan-cli)
 target_sources(
-  usbtan-cli
-  PRIVATE src/usbtan-cli.cc
-          src/flickercode.c
-          src/flickercode.h
+  browser-usbtan
+  PRIVATE src/main.cc
+          src/generate_tan.cc
+          src/generate_tan.hh
           src/hhd_command.cc
           src/hhd_command.hh
           src/resolve_func.c
-          src/resolve_func.h
-          src/generate_tan.cc
-          src/generate_tan.hh
-          )
-target_compile_definitions(usbtan-cli PRIVATE ENABLE_CLI)
-target_link_libraries(usbtan-cli PRIVATE Gwenhywfar::Gwenhywfar GSL)
+          src/resolve_func.h)
+target_link_libraries(browser-usbtan PRIVATE Gwenhywfar::Gwenhywfar GSL
+                                             nlohmann_json::nlohmann_json)
 
 configure_file(usbtan.json.in ${CMAKE_BINARY_DIR}/usbtan.json @ONLY)
 

@@ -38,7 +38,6 @@ void emit_response(FILE* fp, json response) {
 int main() {
   auto js = read_request(stdin);
   auto flickercode = js["flickercode"].get<std::string>();
-
   auto cmd = HhdCommand{flickercode};
   auto res = generate_tan(cmd);
   js["tan"] = res.Tan;
